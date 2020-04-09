@@ -1,28 +1,40 @@
-import React,{Component} from "react"
+import React, { Component } from "react"
+import Table from "../components/Table"
+import Api from "../utils/api"
 
-import Button from "../components/Button"
+
 
 export default class Home extends Component {
     state = {
-        name:""
+        name: "",
+        results: []
     }
-//componentdidmount is onload, first loads the page, it assigns the name to chicago
-   componentDidMount(){
-        this.setState({
-            name:"Chicago"
-        })
-   }
+    //componentdidmount is onload, first loads the page, it assigns the name to chicago
+    componentDidMount() {
+        Api.randomPeople().then((response)=>{
+            let apiResults= response.data.results
+            console.log("array",apiResults.length)
+            if(apiResults != undefined) {
+                this.setState({
+                    results: apiResults
+                }) 
 
-   handleFormSubmit=()=>{
-       alert("Hi Karen")
-   }
+
+                console.log(this.state.results)
+            }
+            
+        }) 
+        
+    }
+
+  
     render() {
-        return(
+        return (
             <div>
-            <Button handleOnClick={this.handleFormSubmit} karen={this.state.name}  phil="test" />
-        </div>
+                <Table resultsArray={this.state.results} />
+            </div>
 
         )
-    
+
     }
 }
