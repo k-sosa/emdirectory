@@ -1,4 +1,6 @@
 import React from 'react';
+import "./index.css"
+import TextBox from "../TextBox"
 
 // props={
 //     resultsArray: this.state.results
@@ -9,8 +11,9 @@ function Table(props) {
         <div className="container">
 
 
-
-
+            <h2 className="title">Employee Directory</h2>
+            <br></br>
+            <TextBox  search={props.search}   handleOnChange={props.handleOnChange}/>
             <table className="table">
 
 
@@ -18,7 +21,7 @@ function Table(props) {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Picture</th>
-                        <th scope="col">First</th>
+                        <th scope="col" >First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>

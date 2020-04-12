@@ -16,7 +16,7 @@ function App() {
   useEffect(()=>{
 
      setLocationState({
-       name:"Chicago"
+       name:""
      })
   },[])
   return (
